@@ -1,0 +1,32 @@
+<div>
+    <div style="margin: 50px 0px;">
+        <p style="text-align: center; font-size: 35px; text-decoration: underline;">Detail Item</p>
+    </div>
+    <div *ngIf="itemDetail">
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <div style="margin-left: 20px;">
+                <p>ID</p>
+                <p>Code</p>
+                <p>Name</p>
+                <p>Price</p>
+                <p>Stock</p>
+                <p>Is Available</p>
+                <p>Last Re Stock</p>
+            </div>
+            <div>
+                <p> : {{itemDetail.itemId}}</p>
+                <p> : {{itemDetail.itemCode}}</p>
+                <p> : {{itemDetail.itemName}}</p>
+                <p> : {{itemDetail.price}}</p>
+                <p> : {{itemDetail.stock}}</p>
+                <p> : {{itemDetail.isAvailable}}</p>
+                <p> : {{itemDetail.lastReStock}}</p>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: center;">
+            <button (click)="editButtonClick(itemDetail)">Edit</button>
+            <button (click)="deleteButtonClick(itemDetail.itemId)">Delete</button>
+        </div>
+    </div>
+</div>

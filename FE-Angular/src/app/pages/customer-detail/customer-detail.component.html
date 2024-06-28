@@ -1,0 +1,36 @@
+<div>
+    <div style="margin: 50px 0px;">
+        <p style="text-align: center; font-size: 35px; text-decoration: underline;">Detail Customer</p>
+    </div>
+    <div *ngIf="customerDetail">
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <div>
+                <img src="{{customerDetail.pic}}" style="width: 312px; height: 312px;">
+            </div>
+            <div style="margin-left: 20px;">
+                <p>Customer ID</p>
+                <p>Code</p>
+                <p>Name</p>
+                <p>Address</p>
+                <p>Phone</p>
+                <p>Is Active</p>
+                <p>Last Order Date</p>
+            </div>
+            <div>
+                <p> : {{customerDetail.customerId}}</p>
+                <p> : {{customerDetail.customerCode}}</p>
+                <p> : {{customerDetail.customerName}}</p>
+                <p> : {{customerDetail.customerAddress}}</p>
+                <p> : {{customerDetail.customerPhone}}</p>
+                <p> : {{customerDetail.isActive}}</p>
+                <p> : {{customerDetail.lastOrderDate}}</p>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: center;">
+            <button (click)="editButtonClick(customerDetail)">Edit</button>
+            <button (click)="deleteButtonClick(customerDetail.customerId)">Delete</button>
+        </div>
+    </div>
+</div>
+

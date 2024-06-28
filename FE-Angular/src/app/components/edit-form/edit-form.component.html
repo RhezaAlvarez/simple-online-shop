@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Edit Customer</h2>
+<div mat-dialog-content>
+  <form [formGroup]="editCustomerForm">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="customerName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="customerAddress">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="customerPhone">
+    </mat-form-field>
+    <div>
+        <label for="file">Profile Photo</label>
+        <input id="file" type="file" (change)="onPicChange($event)">
+      </div>
+  </form>
+</div>
+<mat-dialog-actions>
+  <button mat-button (click)="closeModal()">Cancel</button>
+  <button mat-button (click)="onSubmit()">Save</button>
+</mat-dialog-actions>

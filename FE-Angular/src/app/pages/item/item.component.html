@@ -1,0 +1,90 @@
+<div *ngIf="items">
+  <div style="margin: 50px 0px">
+    <p style="text-align: center; font-size: 35px; text-decoration: underline">
+      item List
+    </p>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 10px; row-gap: 20px;">
+    <div style="display: flex; gap: 10px; ">
+      <mat-form-field style="margin-bottom: -1.25em !important;">
+        <mat-label>Filter By</mat-label>
+        <mat-select [(value)]="filterBy">
+          <mat-option value="itemName">Name</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field style="margin-bottom: -1.25em !important;">
+        <mat-label>Filter Value</mat-label>
+        <input matInput [(ngModel)]="filterValue">
+      </mat-form-field>
+    
+      <button (click)="applyFilter()" style="cursor: pointer;">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div style="display: flex; gap: 10px; height: 30px;">
+      <button (click)="addButtonClick()">Add</button>
+    </div>
+    
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; row-gap: 20px; overflow: auto;">
+    <mat-table [dataSource]="items" class="mat-elevation-z8" matSort (matSortChange)="onSortChange($event)"> 
+      <ng-container matColumnDef="ID">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item.itemsId }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item.itemsName }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Code">
+        <mat-header-cell *matHeaderCellDef> Code </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item.itemsCode }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Stock">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Stock </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item.stock }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item.price }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Is Available">
+        <mat-header-cell *matHeaderCellDef> Is Active </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item.isAvailable }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Last Re Stock">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Last Re Stock </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item.lastReStock }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Details">
+        <mat-header-cell *matHeaderCellDef> Detail </mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <button mat-button (click)="detailButtonClick(item.itemsId)">
+            Details
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator 
+      [length]="totalItems"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 20]"
+      (page)="onPageChange($event)"
+    > 
+    </mat-paginator>
+  </div>
+</div>

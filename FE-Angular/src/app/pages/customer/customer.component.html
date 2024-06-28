@@ -1,0 +1,83 @@
+<div *ngIf="customers">
+  <div style="margin: 50px 0px;">
+    <p style="text-align: center; font-size: 35px; text-decoration: underline;">Customer List</p>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 10px; row-gap: 20px;">
+    <div style="display: flex; gap: 10px; ">
+      <mat-form-field style="margin-bottom: -1.25em !important;">
+        <mat-label>Search By</mat-label>
+        <mat-select [(value)]="filterBy">
+          <mat-option value="customerName">Name</mat-option>
+          <mat-option value="customerAddress">Address</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field style="margin-bottom: -1.25em !important;">
+        <mat-label>Search</mat-label>
+        <input matInput [(ngModel)]="filterValue">
+      </mat-form-field>
+    
+      <button (click)="applyFilter()" style="cursor: pointer;">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div style="display: flex; gap: 10px; height: 30px;">
+      <button (click)="addButtonClick()">Add</button>
+    </div>
+    
+  </div>
+  
+  <div style="display: flex; flex-direction: column; align-items: center; row-gap: 20px; overflow: auto;">
+    <mat-table [dataSource]="customers" class="mat-elevation-z8" matSort (matSortChange)="onSortChange($event)">
+      <ng-container matColumnDef="ID">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let customer"> {{customer.customerId}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let customer"> {{customer.customerName}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Address">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+        <mat-cell *matCellDef="let customer"> {{customer.customerAddress}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Code">
+        <mat-header-cell *matHeaderCellDef> Code </mat-header-cell>
+        <mat-cell *matCellDef="let customer"> {{customer.customerCode}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Is Active">
+        <mat-header-cell *matHeaderCellDef> Is Active </mat-header-cell>
+        <mat-cell *matCellDef="let customer"> {{customer.isActive}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Last Order Date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Last Order Date </mat-header-cell>
+        <mat-cell *matCellDef="let customer"> {{customer.lastOrderDate}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="Details">
+        <mat-header-cell *matHeaderCellDef> Detail </mat-header-cell>
+        <mat-cell *matCellDef="let customer">
+          <button mat-button (click)="detailButtonClick(customer.customerId)">Details</button>
+        </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator 
+      [length]="totalItems"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 20]"
+      (page)="onPageChange($event)"
+    > 
+    </mat-paginator>
+  </div>
+  
+</div>

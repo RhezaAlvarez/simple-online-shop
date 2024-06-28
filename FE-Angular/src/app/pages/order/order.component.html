@@ -1,0 +1,92 @@
+<div *ngIf="orders">
+    <div style="margin: 50px 0px">
+      <p style="text-align: center; font-size: 35px; text-decoration: underline">
+        Order List
+      </p>
+    </div>
+  
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 10px; row-gap: 20px;">
+      <div style="display: flex; gap: 10px; ">
+        <mat-form-field style="margin-bottom: -1.25em !important;">
+          <mat-label>Search By</mat-label>
+          <mat-select [(value)]="filterBy">
+              <mat-option value="customerName">Customer Name</mat-option>
+            <mat-option value="itemName">Item Name</mat-option>
+          </mat-select>
+        </mat-form-field>
+      
+        <mat-form-field style="margin-bottom: -1.25em !important;">
+          <mat-label>Search</mat-label>
+          <input matInput [(ngModel)]="filterValue">
+        </mat-form-field>
+      
+        <button (click)="applyFilter()" style="cursor: pointer;">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+      <div style="display: flex; gap: 10px; height: 30px;">
+        <button (click)="addButtonClick()" style="">Add</button>
+        <button (click)="downloadReportButtonClick()">Download Report</button>
+      </div>
+    </div>
+  
+    <div style="display: flex; flex-direction: column; align-items: center; row-gap: 20px; overflow: auto;">
+      <mat-table [dataSource]="orders" class="mat-elevation-z8" matSort (matSortChange)="onSortChange($event)">
+        <ng-container matColumnDef="ID">
+          <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+          <mat-cell *matCellDef="let order"> {{ order.orderId }} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="Order Code">
+          <mat-header-cell *matHeaderCellDef> Order Code </mat-header-cell>
+          <mat-cell *matCellDef="let order"> {{ order.orderCode }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Order Date">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Order Date </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{ order.orderDate }} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="Customer Name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{ order.customerName }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Item Name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Item Name </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{ order.itemName }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Quantity">
+            <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{ order.quantity }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Total Price">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Total Price </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{ order.totalPrice }} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="Details">
+          <mat-header-cell *matHeaderCellDef> Detail </mat-header-cell>
+          <mat-cell *matCellDef="let order">
+            <button mat-button (click)="detailButtonClick(order.orderId)">
+              Details
+            </button>
+          </mat-cell>
+        </ng-container>
+  
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+  
+      <mat-paginator 
+        [length]="totalOrders"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 20]"
+        (page)="onPageChange($event)"
+      > 
+      </mat-paginator>
+    </div>
+  </div>
+  

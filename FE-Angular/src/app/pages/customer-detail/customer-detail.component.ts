@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerDetailModel } from './customer-detail-model';
+import { CustomerDetailModel } from '../../schemas/customer-detail-model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../../services/customer.service';
 import { MatDialog } from '@angular/material/dialog';

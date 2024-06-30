@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { CustomerModel } from './customer-model';
+import { CustomerModel } from '../../schemas/customer-model';
 import { CustomerService } from '../../services/customer.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';

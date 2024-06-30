@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemDetailModel } from './item-detail-model';
+import { ItemDetailModel } from '../../schemas/item-detail-model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from '../../services/item.service';
 import { MatDialog } from '@angular/material/dialog';

@@ -14,7 +14,7 @@ import { CustomerDetailComponent } from "./pages/customer-detail/customer-detail
 import { ItemDetailComponent } from "./pages/item-detail/item-detail.component";
 import { OrderDetailComponent } from "./pages/order-detail/order-detail.component";
 import { CommonModule } from "@angular/common";
-import { NavbarComponent } from "./pages/navbar/navbar.component";
+import { NavbarComponent } from "./components/navbar/navbar.component";
 import { EditFormComponent } from "./components/edit-form/edit-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatFormField, MatFormFieldModule } from "@angular/material/form-field";

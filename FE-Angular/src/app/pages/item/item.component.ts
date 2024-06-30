@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ItemModel } from './item-model';
+import { ItemModel } from '../../schemas/item-model';
 import { ItemService } from '../../services/item.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';

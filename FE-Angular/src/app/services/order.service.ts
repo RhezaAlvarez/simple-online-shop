@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
-import { OrderModel } from "../pages/order/order-model";
-import { OrderDetailModel } from "../pages/order-detail/order-detail-model";
+import { OrderModel } from "../schemas/order-model";
+import { OrderDetailModel } from "../schemas/order-detail-model";
 
 @Injectable({
     providedIn: 'root' 

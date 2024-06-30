@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { OrderModel } from './order-model';
+import { OrderModel } from '../../schemas/order-model';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { OrderService } from '../../services/order.service';

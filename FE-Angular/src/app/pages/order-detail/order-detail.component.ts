@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OrderDetailModel } from './order-detail-model';
+import { OrderDetailModel } from '../../schemas/order-detail-model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from '../../services/order.service';
 import { MatDialog } from '@angular/material/dialog';

@@ -1,1 +1,1 @@
-# BTPN-Rheza
+# simple-online-shop-rheza
